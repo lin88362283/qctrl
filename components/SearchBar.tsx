@@ -3,10 +3,14 @@ import { TextField, Button, Box } from '@mui/material';
 import ui from '../constants/ui';
 import styles from '../styles/SearchBar.module.scss';
 
-interface SearchBarProps {
+export interface SearchBarProps {
 	handleSearch: (keyword: string) => void;
 }
 
+/**
+ * @description render search bar component
+ * @param {(keyword: string)=> void} handleSearch function to handle the search result typed in text field
+ */
 const SearchBar: React.FC<SearchBarProps> = React.memo(({ handleSearch }) => {
 	const [input, setInput] = useState<string>('');
 

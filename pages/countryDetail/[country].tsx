@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootStore } from '../../state/store';
 import content from '../../constants/components/countryDetail';
 
+/**
+ * @description The country detail information page
+ */
 const CountryDetail: NextPage = () => {
 	const [displayedCountry, setDisplayedCountry] = useState<ICountry>({ name: '' });
 	const countryState: ICountryState = useSelector((state: RootStore) => state.country);

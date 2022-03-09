@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootStore } from '../state/store';
 import Constraint from '../constants/constraint';
 
+/**
+ * @description The index page renders countries page with a search bar and a country list
+ */
 const CountryList: NextPage = () => {
 	const [displayedCountries, setDisplayedCountries] = useState<Array<ICountry>>([]);
 	const [pageNumber, setPageNumber] = useState<number>(0);

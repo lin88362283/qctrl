@@ -1,19 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { TextField, Button, Box } from '@mui/material';
-import UI from '../constants/UI';
+import ui from '../constants/ui';
 
-const SearchBar = ({ handleSearch }) => {
-	const [input, setInput] = useState<String>('');
+interface SearchBarProps {
+	handleSearch: (result: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = React.memo(({ handleSearch }) => {
+	const [input, setInput] = useState<string>('');
 	handleSearch(input);
 	return (
 		<Box>
-			<TextField label="Search" placeholder={UI.SEARCH_PLACEHOLDER}
+			<TextField label="Search" placeholder={ui.SEARCH_PLACEHOLDER}
 				onChange={(e) => { setInput(e.target.value) }} />
 			<Button onClick={() => { handleSearch(input) }}>
-				{UI.SEARCH}
+				{ui.SEARCH}
 			</Button>
 		</Box>
 	)
-}
+})
+
+SearchBar.displayName = 'SearchBar';
 
 export default SearchBar;

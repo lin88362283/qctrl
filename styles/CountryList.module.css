@@ -1,0 +1,7 @@
+.container {
+  margin: 0 auto;
+}
+
+.countryList__button--hidden {
+  visibility: hidden;
+}

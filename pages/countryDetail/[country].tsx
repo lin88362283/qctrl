@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 
 const CountryDetail: NextPage = () =>{
 	return (
+		<></>
 	)
 }
 

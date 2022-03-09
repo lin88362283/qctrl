@@ -3,12 +3,11 @@ import { TextField, Button, Box } from '@mui/material';
 import ui from '../constants/ui';
 
 interface SearchBarProps {
-	handleSearch: (result: string) => void;
+	handleSearch: (keyword: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = React.memo(({ handleSearch }) => {
 	const [input, setInput] = useState<string>('');
-	handleSearch(input);
 	return (
 		<Box>
 			<TextField label="Search" placeholder={ui.SEARCH_PLACEHOLDER}

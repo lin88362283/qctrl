@@ -1,0 +1,21 @@
+@import "./_variables.scss";
+.container {
+	input {
+		padding: 13px 50px 13px 5px;
+		border: 1px solid $theme-color;
+		font-size: 14px;
+	}
+	.searchBar {
+		&__input {
+			:first-child {
+				border-radius: 0;
+			}
+		}
+		&__button {
+			color: $theme-color;
+			border: 1px solid $theme-color;
+			margin-left: 10px;
+			padding: 10px 29px;
+		}
+	}
+}

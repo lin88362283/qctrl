@@ -3,6 +3,7 @@ import SearchBar, { SearchBarProps } from "../../components/SearchBar";
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ui from '../../constants/ui';
+
 describe("SearchBar", () => {
 	let expectedProps: SearchBarProps;
 	beforeEach(() => {

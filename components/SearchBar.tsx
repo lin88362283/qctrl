@@ -9,6 +9,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = React.memo(({ handleSearch }) => {
 	const [input, setInput] = useState<string>('');
+	
 	return (
 		<Box className={styles['container']}>
 			<TextField className={styles['searchBar__input']} placeholder={ui.SEARCH_PLACEHOLDER}

@@ -11,10 +11,12 @@ export const fetchCountries = () => async (dispatch: Dispatch) => {
 		const res = await getCountries();
 		const data = res.status === 200 ? res.data : [];
 		const formData = data.map((country: any) => {
+			console.log("country",country)
 			return {
 				name: country.name.common,
 				population: country.population,
-				demonym: country.demonym?.eng.m,
+				demonym: country.demonyms?.eng.m,
+				flag: country.flags[0]
 			}
 		}).sort((a: ICountry, b: ICountry) => a.name > b.name ? 1 : -1);
 		setItem(CountryStorage.COUNTRIES, formData)

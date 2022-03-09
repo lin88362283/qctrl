@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import styles from '../styles/CountryList.module.scss';
 import { fetchCountries } from '../state/actions/country';
 import { Box, List, Button, ListItem, CircularProgress } from '@mui/material';
@@ -19,8 +19,8 @@ const CountryList: NextPage = () => {
 	const [pageNumber, setPageNumber] = useState<number>(0);
 	const countryState: ICountryState = useSelector((state: RootStore) => state.country);
 	const dispatch = useDispatch();
-	const startIndex = pageNumber * Constraint.PAGE_SIZE;
-	const endIndex = (pageNumber + 1) * Constraint.PAGE_SIZE;
+	const startIndex = useMemo(()=>pageNumber * Constraint.PAGE_SIZE,[pageNumber]);
+	const endIndex = useMemo(()=>(pageNumber + 1) * Constraint.PAGE_SIZE,[pageNumber]);
 
 	useEffect(() => {
 		dispatch(fetchCountries())
@@ -31,7 +31,7 @@ const CountryList: NextPage = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [countryState.isFetchCountriesLoading])
 
-	const handleSearch = (keyword: string) => {
+	const handleSearch = useCallback((keyword: string) => {
 		const results = countryState.countries.reduce(
 			(filteredCountries: Array<ICountry>, currentCountry: ICountry) => {
 				currentCountry.name.toLowerCase().includes(keyword.toLowerCase()) &&
@@ -40,15 +40,15 @@ const CountryList: NextPage = () => {
 			}, [])
 		setDisplayedCountries(results);
 		setPageNumber(0);
-	}
+	},[countryState.countries])
 
-	const handlePaging = (isPrevious: boolean) => {
+	const handlePaging = useCallback((isPrevious: boolean) => {
 		isPrevious ? setPageNumber(pageNumber - 1) : setPageNumber(pageNumber + 1);
-	}
+	},[pageNumber])
 
-	const hidePrevious = () => pageNumber === 0;
+	const hidePrevious = useCallback(() => pageNumber === 0,[pageNumber]);
 
-	const hideNext = () => pageNumber === Math.ceil(displayedCountries?.length / Constraint.PAGE_SIZE) - 1;
+	const hideNext = useCallback(() => pageNumber === Math.ceil(displayedCountries?.length / Constraint.PAGE_SIZE) - 1,[pageNumber,displayedCountries]);
 
 	return (
 		<Box className={styles['container']}>

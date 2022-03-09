@@ -5,7 +5,7 @@ const initialState: ICountryState = {
 	countries: [],
 	isFetchCountriesLoading: true
 }
-// COUNTER REDUCER
+
 const countryReducer = (state: ICountryState, { type, payload }: ICountryAction): ICountryState => {
 	const fetchCountries = {
 		...state,

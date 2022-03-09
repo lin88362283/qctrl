@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import styles from '../styles/CountryList.module.scss';
 import { fetchCountries } from '../state/actions/country';
-import { Box, List, Button, ListItem, CircularProgress, ButtonGroup } from '@mui/material';
+import { Box, List, Button, ListItem, CircularProgress } from '@mui/material';
 import Link from 'next/link';
 import ui from '../constants/ui';
 import type { ICountry, ICountryState } from '../interfaces/country';

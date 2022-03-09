@@ -2,7 +2,8 @@ import Country from "../constants/actionTypes/country";
 export interface ICountry {
 	name: string,
 	population?: number,
-	demonym?: string
+	demonym?: string,
+	flag?: string
 }
 
 export interface ICountryState {

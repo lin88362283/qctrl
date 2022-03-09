@@ -1,36 +1,36 @@
 @import "./_variables.scss";
 
 .container {
-  margin: 0 auto;
-  margin-top: 100px;
-  width: 320px;
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 320px;
 }
 
 .countryList {
-  &__button {
-    &--hidden {
-      visibility: hidden;
-    }
-    color: $theme-color;
-    border: 1px solid $theme-color;
-    padding: 10px 0;
-    width: 110px;
-  }
-  &__list {
-    cursor: pointer;
-    margin-top: 70px;
-    margin-bottom: 30px;
-    li {
-      border: 1px solid $theme-color;
-      border-top: none;
-      padding: 15px 10px;
-    }
-    :first-child {
-      border-top: 1px solid $theme-color;
-    }
-  }
-  &__pagination {
-    display: flex;
-    justify-content: space-between;
-  }
+	&__button {
+		&--hidden {
+			visibility: hidden;
+		}
+		color: $theme-color;
+		border: 1px solid $theme-color;
+		padding: 10px 0;
+		width: 110px;
+	}
+	&__list {
+		cursor: pointer;
+		margin-top: 70px;
+		margin-bottom: 30px;
+		li {
+			border: 1px solid $theme-color;
+			border-top: none;
+			padding: 15px 10px;
+		}
+		:first-child {
+			border-top: 1px solid $theme-color;
+		}
+	}
+	&__pagination {
+		display: flex;
+		justify-content: space-between;
+	}
 }

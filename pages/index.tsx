@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
-import styles from '../styles/CountryList.module.css';
+import styles from '../styles/CountryList.module.scss';
 import { fetchCountries } from '../state/actions/country';
-import { Box, List, Button, ListItem, CircularProgress } from '@mui/material';
+import { Box, List, Button, ListItem, CircularProgress, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
 import ui from '../constants/ui';
 import type { ICountry, ICountryState } from '../interfaces/country';
@@ -34,7 +34,7 @@ const CountryList: NextPage = () => {
         currentCountry.name.toLowerCase().includes(keyword.toLowerCase()) &&
           filteredCountries.push({ name: currentCountry.name });
         return filteredCountries;
-      }, []).sort((a, b) => a.name > b.name ? 1 : -1);
+      }, [])
     setDisplayedCountries(results);
     setPageNumber(0);
   }
@@ -54,7 +54,7 @@ const CountryList: NextPage = () => {
         !countryState.isFetchCountriesLoading &&
         <Box className={styles['container']}>
           <SearchBar handleSearch={handleSearch} />
-          <List>
+          <List className={styles['countryList__list']}>
             {displayedCountries?.slice(startIndex, endIndex).map((country) => {
               return (
                 <Link href={country.name} passHref key={country.name}>
@@ -65,14 +65,16 @@ const CountryList: NextPage = () => {
               )
             })}
           </List>
-          <Button className={hidePrevious() ? styles['countryList__button--hidden'] : styles['countryList__button']}
-            onClick={() => { handlePaging(true) }}>
-            {ui.PREVIOUS}
-          </Button>
-          <Button className={hideNext() ? styles['countryList__button--hidden'] : styles['countryList__button']}
-           onClick={() => { handlePaging(false) }}>
-            {ui.NEXT}
-          </Button>
+          <Box className={styles['countryList__pagination']}>
+            <Button className={hidePrevious() ? styles['countryList__button--hidden'] : styles['countryList__button']}
+              onClick={() => { handlePaging(true) }}>
+              {ui.PREVIOUS}
+            </Button>
+            <Button className={hideNext() ? styles['countryList__button--hidden'] : styles['countryList__button']}
+              onClick={() => { handlePaging(false) }}>
+              {ui.NEXT}
+            </Button>
+          </Box>
         </Box >
       }
     </>
